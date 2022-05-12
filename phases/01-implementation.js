@@ -56,6 +56,18 @@ class HashTable { // get O(1), set O(1), deleteKey O(1)
 
   read(key) {
     // Your code here
+    const index = this.hashMod(key);
+
+    let currentObject = this.data[index];
+
+    while (currentObject) {
+      if (currentObject.key === key) {
+        return currentObject.value
+      }
+      currentObject = currentObject.next;
+    }
+    //happens when it doesnt match the key
+    return undefined;
   }
 
 
